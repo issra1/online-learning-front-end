@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="search-container">
+      <input type="text" placeholder="Rechercher cours..." class="search-input" (input)="searchCourses($event)">
+    </div>
+    <div class="row">
+  
+  
+      <div class="col-md-8">
+        <div class="card" *ngIf="selectedCourse">
+          <div class="card-body">
+            <div class="youtube-player-container">
+              <youtube-player [videoId]="selectedCourse.youtubeUrl" suggestedQuality="highres" [height]="200"
+                [width]="'100%'"></youtube-player>
+            </div>
+            <div>
+              <br>
+              <h6 class="card-subtitle text-center" style="background-color: #585e61;">{{selectedCourse.courseName}}</h6>
+              <h6 class="card-subtitle text-center" style="background-color: #585e61;">{{selectedCourse.description}}</h6>
+              <div class="visit-btn">
+  
+                <a id="enrollsuccessbtn" class="btn btn-primary btn-block" style="background-color: white;">
+                  <!-- Heart icon with red color and larger size -->
+                  <i class="fas fa-heart fa-lg" style="color: red; margin-right: 45px;"
+                    [style.opacity]="!isCourseFavorite ? '1' : '0.5'"
+                    [style.pointer-events]="!isCourseFavorite ? 'auto' : 'none'"
+                    (click)="selectedCourse.id && !this.isCourseFavorite && addToFavorites(selectedCourse.id)"></i>
+  
+                  <!-- Plus circle icon with blue color and normal size -->
+                  <i class="fas fa-heart-broken fa-lg" style="color: red; margin-right: 45px;"
+                    [style.opacity]="isCourseFavorite ? '1' : '0.5'"
+                    [style.pointer-events]="isCourseFavorite ? 'auto' : 'none'"
+                    (click)="selectedCourse.id && isCourseFavorite && removeFromFavorites(selectedCourse.id)"></i>
+  
+                  <!-- Eye icon with green color and normal size -->
+                  <i class="fas fa-eye fa-lg" style="color: green; margin-right: 45px;" (click)="openUrlCourse(selectedCourse.websiteUrl)"></i>
+  
+                  <!-- Bookmark icon with orange color and normal size -->
+                  <i class="fas fa-bookmark fa-lg" style="color: orange; margin-right: 45px;"></i>
+  
+                  <!-- Share icon with purple color and normal size -->
+                  <i class="fas fa-share fa-lg" style="color: purple; margin-right: 45px;"></i>
+                </a>
+  
+              </div>
+              <hr>
+  
+              <div class="comments-section">
+                <h5>Comments</h5>
+                <!-- Placeholder for comments -->
+                <div class="comment">
+                  <p>User123: This course is amazing!</p>
+                  <p class="response">Response: Thank you, User123!</p>
+                </div>
+                <div class="comment">
+                  <p>User456: Can't wait to enroll!</p>
+                  <!-- Placeholder for response form -->
+                  <form class="response-form">
+                    <div class="form-group">
+                      <textarea class="form-control" rows="1" placeholder="Write a response..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+  
+      <div class="col-md-4">
+        <h2>Liste des cours</h2>
+        <div class="list-group">
+          <button *ngFor="let course of filteredCourses" [disabled]="this.loginService.isUser()" type="button"
+            class="list-group-item list-group-item-action" (click)="playVideo(course)">
+            {{ course.courseName }}
+          </button>
+        </div>
+        <button *ngIf="!this.loginService.isUser() && !this.loginService.isLearner()" class="btn btn-success mt-3" (click)="createCourse()">Créer un
+          cours</button>
+      </div>
+    </div>
+  </div>

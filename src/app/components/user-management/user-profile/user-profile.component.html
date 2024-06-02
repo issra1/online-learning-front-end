@@ -1,0 +1,124 @@
+<div class="row" id="profilecard">
+    <div *ngFor="let user of profileDetails | async" id="bloodCards">
+        <a><img *ngIf="user.gender === 'Male' || user.gender === 'male'" class="bloodimg"
+                [src]="'assets/img/maleuser.png'" width="140" height="140"></a>
+        <a><img *ngIf="user.gender === 'Female' || user.gender === 'female'" class="bloodimg"
+                [src]="'assets/img/femaleuser.png'" width="140" height="140"></a>
+        <div class="card-block">
+            <div class="text"><b class="element" style="margin-left: 6%;"> {{user.username}}</b> </div>
+            <div class="text"><small
+                    style="font-size: smaller; margin-left: 6%; padding: 3px 8px 3px 8px; background-color: rgb(87, 64, 8); border-radius: 10px; font-weight: bold; width: 55%; color: white;">{{user.fullName}}</small>
+            </div>
+            <div class="text"><b class="element" style="margin-left: 6%;"> {{user.phoneNumber}}</b> </div>
+            <div class="text"><b class="element" style="margin-left: 6%;"> {{user.gender}}</b> </div>
+            <div class="text"><b class="element" style="margin-left: 6%;"> {{user.profession}}</b> </div>
+            <div class="text"><b class="element" style="margin-left: 6%;"> {{user.email}}</b> </div>
+            <div class="btndiv" style="align-items: center;"><button class="editbtn" (click)="editProfile()"><i
+                        class="fa fa-edit"></i> Modifier</button></div>
+            <small id="message" *ngIf="temp === true"
+                style="text-align: center; margin-top: 3%; color: green;"><b>Modificatioon effectué! Veuillez authentifier autre fois</b></small>
+        </div>
+    </div>
+</div>
+
+<div class="container register" id="profileform">
+    <div class="row">
+        <div class="col-md-9 register-right">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="textual">Modifier profil</h3>
+                    <small *ngIf="temp === false"
+                        style="font-weight: bold; margin-left: 25%; text-align: center; color: darkgreen;"><b>Cher
+                            {{loggedUser}}, Modifier votre profil ici</b></small>
+                    <small *ngIf="temp === true" style="text-align: center; color: green;"><b>Profil mis a jour
+                            Successfully !!!</b></small>
+                    <form #Updateform="ngForm" style="margin-top: -15%;" (ngSubmit)="updateUserProfile()">
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="nom user *" name="username"
+                                        [(ngModel)]="user.username" required #username="ngModel"
+                                        [class.is-invalid]="username.invalid && username.touched">
+                                    <small class="text-danger"
+                                        [class.d-none]="username.valid || username.untouched"><b>Champ
+                                            obligatoire</b></small>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="sexe *" name="usergender"
+                                        [(ngModel)]="user.gender" required #usergender="ngModel"
+                                        [class.is-invalid]="usergender.invalid && usergender.touched">
+                                    <small class="text-danger"
+                                        [class.d-none]="usergender.valid || usergender.untouched"><b>Champ
+                                            obligatoire</b></small>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="travail *"
+                                        name="userprofession" [(ngModel)]="user.profession" required
+                                        #userprofession="ngModel"
+                                        [class.is-invalid]="userprofession.invalid && userprofession.touched">
+                                    <small class="text-danger"
+                                        [class.d-none]="userprofession.valid || userprofession.untouched"><b>Champ
+                                            obligatoire</b></small>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Mot de passe *" name="pwd"
+                                    [(ngModel)]="user.password" required #userpassword="ngModel"
+                                    [class.is-invalid]="userpassword.invalid && userpassword.touched"
+                                    [value]="user.password ? '' : null">
+                                    <div *ngIf="userpassword.errors && userpassword.invalid && userpassword.touched">
+                                        <small class="text-danger" *ngIf="userpassword.errors.required"><b>Champ
+                                                obligatoire</b></small>
+                                    </div>
+                                    <small style="color: gray; font-size: 10px;">au moins une majuscule, un chiffre
+                                        numérique, une minuscule, un caractère spécial, d'une longueur de 6 à 20</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="adresse email *"
+                                        name="useremail" [(ngModel)]="user.email" required
+                                        pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" #useremail="ngModel"
+                                        [class.is-invalid]="useremail.invalid && useremail.touched">
+                                    <div *ngIf="useremail.errors && (useremail.invalid && useremail.touched)">
+                                        <small class="text-danger" *ngIf="useremail.errors.required"><b>Champ
+                                                obligatoire</b></small>
+                                        <small class="text-danger" *ngIf="useremail.errors.pattern"><b>Email
+                                                invalid</b></small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" maxlength="8" minlength="8" class="form-control"
+                                        placeholder="Télephone *" name="usermobile" [(ngModel)]="user.phoneNumber"
+                                        required #usermobile="ngModel"
+                                        [class.is-invalid]="usermobile.invalid && usermobile.touched">
+                                    <small class="text-danger"
+                                        [class.d-none]="usermobile.valid || usermobile.untouched"><b>Champ
+                                            obligatoire</b></small>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="addresse *" name="useraddress"
+                                        [(ngModel)]="user.address" required #useraddress="ngModel"
+                                        [class.is-invalid]="useraddress.invalid && useraddress.touched">
+                                    <small class="text-danger"
+                                        [class.d-none]="useraddress.valid || useraddress.untouched"><b>Champ
+                                            obligatoire</b></small>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control"
+                                        placeholder="Confirmer le mot de passe *" name="ConfirmPassword"
+                                        (ngModel)="user.password" required #userconfirmPassword="ngModel"
+                                        [class.is-invalid]="userconfirmPassword.invalid && userconfirmPassword.touched">
+                                    <small class="text-danger"
+                                        [class.d-none]="(userconfirmPassword.value == userpassword.value) || userconfirmPassword.untouched"><b>password
+                                            Ne correspond pas</b></small>
+                                </div>
+                            </div>
+                        </div>
+                        <button [disabled]="Updateform.form.invalid" type="submit"
+                            class="btn registerbtn">Modifier</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

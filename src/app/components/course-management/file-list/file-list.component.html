@@ -1,0 +1,9 @@
+<div class="file-list-container">
+    <h3>Uploaded Files</h3>
+    <ul class="list-group">
+      <li *ngFor="let file of files" class="list-group-item" (click)="displayFile(file)">
+        {{ file.name }}
+      </li>
+    </ul>
+  </div>
+  

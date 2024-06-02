@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="question-list">
+    <h2>Les questions de ce quiz {{ quizId }}</h2>
+    <form (ngSubmit)="submitQuiz()">
+      <ul>
+        <li *ngFor="let question of getCurrentPageQuestions()" class="question-item">
+          <h3>{{ question.title }}</h3>
+          <p *ngIf="!question.timeLeft">Temps écoulé!</p>
+          <p *ngIf="question.timeLeft">{{ formatTime(question.timeLeft) }}</p>
+          <ul>
+            <li *ngFor="let option of question.options" class="option-item"
+              [ngStyle]="{ 'background-color': option.selected && option.wrong ? 'red' : '' }" [ngClass]="{ 
+              'correct-answer': option.correct && option.submitted,
+              'selected-answer': option.selected && !option.wrong,
+              'correct-option': option.correct && option.submitted,
+              'wrong-option': option.wrong && option.submitted,
+              'selected-wrong-option': option.selected && option.wrong
+            }">
+              <input type="radio" name="option{{ question.id }}" [value]="option.id"
+                [(ngModel)]="selectedOptions[question.id]" [disabled]="!question.timeLeft">
+              <label>{{ option.text }}</label>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <button type="submit">Envoyer le Quiz</button>
+      <button (click)="previousPage()" [disabled]="currentPage === 1">Précédent</button>
+      <button (click)="nextPage()" [disabled]="!hasMorePages()">Suivant</button>
+    </form>
+  </div>
+</div>

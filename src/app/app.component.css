@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Mate+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aladin&family=Merienda+One&family=Staatliches&display=swap');
+
+.header {
+  background-color: #ffffff;
+  color: #fff;
+  padding: 10px 20px;
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  top: 0;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 10px;
+  }
+}
+
+
+
+.footer {
+  background-color: #ffffff;
+  color: #fff;
+  padding: 10px 20px;
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  bottom: 0;
+  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 10px;
+  }
+}
+
+
+.sidebar {
+  display: flex;
+  margin-left: 20px;
+  /* Add left margin */
+}
+
+.sidebar {
+  width: 230px;
+  height: 600px;
+  /* Make sidebar full height of viewport */
+  background-color: #2b779b;
+  color: #fff;
+  margin-top: 83px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  /* Enable vertical scrolling if content exceeds viewport height */
+}
+
+.content {
+  margin-left: 30%;
+  /* Adjust for the width of the sidebar */
+  padding: 20px;
+  margin-right: 120px;
+  margin-top: 95px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden; /* Hide overflow content */
+
+}
+
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 5px;
+  /* Add margin between list items */
+}
+
+.sidebar ul li a {
+  display: flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+  line-height: 0.2;
+  /* Set line-height to 1 to minimize space between lines */
+}
+
+.sidebar ul li a:before {
+  content: "\f105";
+  /* Unicode for the icon, you can change it */
+  font-family: "Font Awesome 5 Free";
+  /* Replace with your icon font family */
+  margin-top: 30%;
+}
+
+i {
+  margin-right: 12px;
+  margin-left: 10px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.text {
+  font-family: 'aladin';
+  letter-spacing: 1px;
+  font-size: 35px;
+  font-weight: bolder;
+  color: rgb(5, 44, 42);
+}
+
+.sub-text {
+  font-family: 'aladin';
+  letter-spacing: 1px;
+  font-size: 20px;
+  font-weight: 600;
+  color: darkred;
+}
+
+.dashboard-card {
+  background-color: white;
+  border-radius: 10px;
+  border: none;
+  width:230px;
+  height: 170px;
+  transition: transform .4s;
+  box-shadow: 5px 10px 18px #888888;
+  margin: 2% 3% 5.5% 3%;
+  padding: 3%;
+}
+
+.dashboard-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 30%;
+  height: 80px;
+  float: right;
+  background-color: rgb(248, 246, 96);
+}
+
+#icons {
+  margin-left: 26%;
+  margin-top: 12%;
+  font-size: 3.5em;
+}
+
+
+.containerLine {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Create three columns */
+  grid-gap: 20px; /* Add gap between boxes */
+}
+
+
+.container {
+  line-height: 0px
+  
+}
+
+
+.ul {
+  margin-left: 30px;
+}

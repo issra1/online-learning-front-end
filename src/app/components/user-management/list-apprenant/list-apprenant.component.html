@@ -1,0 +1,62 @@
+<div class="content">
+  <div>
+    <h2 style="color: maroon; margin-left: 200px;">Liste des apprenants</h2>
+  </div>
+
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Rechercher" style="font-weight: bold;">
+    </mat-form-field>
+  </div>
+
+  <div class="example-container mat-elevation-z8">
+
+    <mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="fullName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Nom et prénom </mat-header-cell>
+        <mat-cell *matCellDef="let row" [ngClass]="{'make-green': row.status === 'Accepté', 'make-red': row.status === 'Refusé', 
+        'make-yellow': row.status === 'En Attente'}"> {{row.fullName}} </mat-cell>
+      </ng-container>
+
+
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+        <mat-cell *matCellDef="let row" [ngClass]="{'make-green': row.status === 'Accepté', 'make-red': row.status === 'Refusé', 
+        'make-yellow': row.status === 'En Attente'}"> {{row.email}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="phoneNumber">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Télephone </mat-header-cell>
+        <mat-cell *matCellDef="let row" [ngClass]="{'make-green': row.status === 'Accepté', 'make-red': row.status === 'Refusé', 
+        'make-yellow': row.status === 'En Attente'}"> {{row.phoneNumber}} </mat-cell>
+      </ng-container>
+
+
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Etat </mat-header-cell>
+        <mat-cell *matCellDef="let row" [ngClass]="{'make-green': row.status === 'Accepté', 'make-red': row.status === 'Refusé', 
+        'make-yellow': row.status === 'En Attente'}"> {{row.status}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="valid">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Traitment </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button [disabled]="row.status === 'Accepté' || row.status === 'Refusé'" (click)="deletelUser(row)"
+            class="check" mat-icon-button><mat-icon>check</mat-icon>
+          </button>
+          <button [disabled]="row.status === 'Refusé'" (click)="cancelUser(row)" class="cancelrow"
+            mat-icon-button><mat-icon>sync_disabled</mat-icon></button>
+          <button class="deletelrow" (click)="deletelUser(row)" mat-icon-button><mat-icon>delete</mat-icon></button>
+        </mat-cell>
+      </ng-container>
+
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
+      </mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[7]"></mat-paginator>
+  </div>
+
+</div>

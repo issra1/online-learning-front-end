@@ -1,0 +1,22 @@
+<div class="container">
+<div class="question-create">
+    <h2>Create Question</h2>
+    <form (ngSubmit)="createQuestion()">
+      <div class="form-group">
+        <label for="questionText">Question Text:</label>
+        <textarea id="questionText" class="form-control" [(ngModel)]="question.text" name="text" required></textarea>
+      </div>
+      <h3>Add Options:</h3>
+      <div *ngFor="let option of options; let i = index" class="option-group">
+        <div class="form-group">
+          <label for="optionText{{ i }}">Option {{ i + 1 }}:</label>
+          <input id="optionText{{ i }}" class="form-control" [(ngModel)]="option.text" name="option{{ i }}" required>
+        </div>
+        <button type="button" class="btn btn-danger btn-sm" (click)="removeOption(i)">Remove</button>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="addOption()">Add Option</button>
+      <button type="submit" class="btn btn-success">Create Question</button>
+    </form>
+  </div>
+</div>
+  

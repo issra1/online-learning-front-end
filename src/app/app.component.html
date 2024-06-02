@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<div class="dashbordpage">
+  <div class="header" *ngIf="this.loginService.isUserLoggedIn() && !this.loginService.isCurrentPage()">
+    <app-header></app-header>
+  </div>
+
+  <div class="container" *ngIf="this.loginService.isUserLoggedIn() && !this.loginService.isCurrentPage()">
+    <div class="sidebar">
+      <ul>
+        <li>
+          <img [src]="'assets/img/admin.png'" alt="Card image" height="120px" width="120px"
+            style="margin-left: 55px; margin-top: 20px;">
+          <p style="margin-left: 30px; margin-bottom: 60px;">{{email}}</p>
+        </li>
+        <li *ngIf="this.loginService.isAdmin()" [routerLink]="['/dashbordadmin']"><i class="fas fa-tachometer-alt"></i>
+          Bord</li>
+        <li *ngIf="this.loginService.isTrainer()" [routerLink]="['/dashbordprofessor']"><i
+            class="fas fa-tachometer-alt"></i> Bord</li>
+        <li *ngIf="this.loginService.isLearner()" [routerLink]="['/dashborduser']"><i class="fas fa-tachometer-alt"></i>
+          Bord</li>
+        <li *ngIf="this.loginService.isAdmin()" [routerLink]="['/listprofessor']"><i class="fas fa-user"></i> Gestion
+          des formateurs</li>
+        <li *ngIf="this.loginService.isAdmin()" [routerLink]="['/listuser']"><i class="fas fa-user"></i> Gestion des
+          utilisateurs</li>
+        <li *ngIf="this.loginService.isAdmin()" [routerLink]="['/listapprenants']"><i class="fas fa-user"></i> Gestion
+          des apprenants</li>
+        <li *ngIf="this.loginService.isLearner()" [routerLink]="['/listcoursesfavoris']"><i class="fas fa-heart"></i>
+          Mes favoris</li>
+        <li *ngIf="this.loginService.isLearner()" [routerLink]="['/listcoursespanel']"><i
+            class="fas fa-shopping-cart"></i> Gestion des paniers</li>
+        <li [routerLink]="['/quizzes']"><i class="fas fa-pencil-alt"></i> Gestion des quizzes</li>
+        <li [routerLink]="['/listcourses']"><i class="fas fa-book"></i> Gestion des cours</li>
+        <li *ngIf="this.loginService.isLearner() ||this.loginService.isTrainer()" [routerLink]="['/updateuserprofile']">
+          <i class="fas fa-user"></i> Profil
+        </li>
+
+        <li (click)="logout()"><i class="fas fa-sign-out-alt"></i> Se déconnecter</li>
+      </ul>
+    </div>
+  </div>
+
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+
+
+  <div class="footer" *ngIf="this.loginService.isUserLoggedIn() && !this.loginService.isCurrentPage()">
+    <app-footer></app-footer>
+  </div>
+
+</div>

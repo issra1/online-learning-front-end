@@ -1,0 +1,51 @@
+.popup {
+  position: fixed;
+  top: 20px;
+  /* Adjust as needed */
+  right: 20px;
+  /* Adjust as needed */
+  max-width: 400px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mat-dialog-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.mat-dialog-content {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.dialog-buttons {
+  text-align: right;
+}
+
+.dialog-buttons input[type="button"] {
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
+
+.dialog-buttons input[type="button"]:first-child {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.dialog-buttons input[type="button"]:last-child {
+  background-color: #f44336;
+  color: #fff;
+  margin-left: 10px;
+}
+
+.dialog-buttons input[type="button"]:hover {
+  opacity: 0.8;
+}

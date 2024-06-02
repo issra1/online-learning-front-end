@@ -1,0 +1,12 @@
+<div class="option-list">
+  <div class="container">
+    <h2>Options for Question {{ questionId }}</h2>
+    <ul>
+      <li *ngFor="let option of options" class="option-item">
+        <p>{{ option.text }}</p>
+        <span *ngIf="option.correct" class="correct-indicator">Correct</span>
+      </li>
+    </ul>
+  </div>
+</div>
+  

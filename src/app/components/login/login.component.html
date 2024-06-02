@@ -1,0 +1,128 @@
+<div class="wrapper">
+  <div class="container">
+    <button class="headbtn1" id="userbtn">Apprenant</button>
+    <button class="headbtn2" id="professorbtn">Formateur</button>
+    <button class="headbtn3" id="adminbtn">Admin</button>
+
+
+      <div class="user-login-form">
+        <h2 class="textual">Authentifcation</h2>
+        <form #userloginform="ngForm" (ngSubmit)="authentificateLearner()">
+          <small class="text-danger"><b>{{msg}}</b></small>
+          <div class="form-group">
+            <label for="email">Adresse e-mail: <b class="text-danger">*</b></label>
+            <input type="email" class="form-control" placeholder="Tapez votre email" name="email"
+              [(ngModel)]="user.email" required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" #email="ngModel"
+              [class.is-invalid]="email.invalid && email.touched">
+            <!--<small class="text-danger" [class.d-none]="email.valid || email.untouched"><b>champs requis</b></small>-->
+            <div *ngIf="email.errors && email.invalid && email.touched">
+              <small class="text-danger" **ngIf="email.errors.required"><b>champs requis</b></small>
+              <small class="text-danger" *ngIf="email.errors.pattern"><b>Email invalide</b></small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="pwd" style="margin-top: 5px;">Mot de passe: <b class="text-danger">*</b></label>
+            <input type="password" class="form-control" placeholder="Tapez votre mot de passe" name="pwd"
+              [(ngModel)]="user.password" required #password="ngModel"
+              [class.is-invalid]="password.invalid && password.touched">
+            <div *ngIf="password.errors && password.invalid && password.touched">
+              <small class="text-danger" *ngIf="password.errors.required"><b>champs requis</b></small>
+            </div>
+            <small style="color: gray; font-size: 10px;">Au moins une majuscule, un chiffre numérique, une minuscule, un
+              caractère spécial, d'une longueur de 6 à 20</small>
+          </div>
+
+          <button [disabled]="userloginform.form.invalid" type="submit" class="btn loginbtn">Authentifier</button>
+        </form>
+        <div class="sign-up" style=" text-align: center; margin-top: 10px;">Vous n'avez pas de compte? <small
+            [routerLink]="['/registration']"
+            style="color: navy; text-align: center; cursor: pointer;"><b>Créer</b></small></div>
+        <hr>
+        <b class="textual">
+          <i class="fa fa-arrow-left  mx-3 fa-2x" (click)="backToHome()"></i>
+        </b>
+      </div>
+
+
+      <div class="professor-login-form">
+        <h2 class="textual">AUTHENTIFCATION</h2>
+        <form #professorloginform="ngForm" (ngSubmit)="authentificateProfessor()">
+          <small class="text-danger"><b>{{msg}}</b></small>
+          <div class="form-group">
+            <label for="email">Adresse e-mail: <b class="text-danger">*</b></label>
+            <input type="email" class="form-control" placeholder="Tapez votre email" name="professoremail"
+              [(ngModel)]="professor.email" required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
+              #professoremail="ngModel" [class.is-invalid]="professoremail.invalid && professoremail.touched">
+            <!--<small class="text-danger" [class.d-none]="professoremail.valid || professoremail.untouched"><b>champs requis</b></small>-->
+            <div *ngIf="professoremail.errors && professoremail.invalid && professoremail.touched">
+              <small class="text-danger" *ngIf="professoremail.errors.required"><b>champs requis</b></small>
+              <small class="text-danger" *ngIf="professoremail.errors.pattern"><b>Email invalide</b></small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="pwd" style="margin-top: 5px;">Mot de passe: <b class="text-danger">*</b></label>
+            <input type="password" class="form-control" placeholder="Tapez votre mot de passe" name="pwd"
+              [(ngModel)]="professor.password" required #professorpassword="ngModel"
+              [class.is-invalid]="professorpassword.invalid && professorpassword.touched">
+            <div *ngIf="professorpassword.errors && professorpassword.invalid && professorpassword.touched">
+              <small class="text-danger" *ngIf="professorpassword.errors.required"><b>champs requis</b></small>
+            </div>
+            <small style="color: gray; font-size: 10px;">Au moins une majuscule, un chiffre numérique, une minuscule, un
+              caractère spécial, d'une longueur de 6 à 20</small>
+          </div>
+
+          <button [disabled]="professorloginform.form.invalid" type="submit" class="btn loginbtn">Authentifier</button>
+        </form>
+        <div class="sign-up" style=" text-align: center; margin-top: 10px;">Vous n'avez pas de compte? <small
+            [routerLink]="['/registration']"
+            style="color: navy; text-align: center; cursor: pointer;"><b>Créer</b></small></div>
+        <hr>
+        <b class="textual">
+          <i class="fa fa-arrow-left  mx-3 fa-2x" (click)="backToHome()"></i>
+        </b>
+      </div>
+
+
+
+      <div class="admin-login-form">
+        <h2 class="textual">AUTHENTIFCATION</h2>
+        <form #adminloginform="ngForm" (ngSubmit)="authentificateAdmin()">
+          <small class="text-danger"><b>{{msg}}</b></small>
+          <div class="form-group">
+            <label for="email"> Adresse e-mail: <b class="text-danger">*</b></label>
+            <input type="email" class="form-control" placeholder="Tapez votre email" name="email"
+              [(ngModel)]="user.email" required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" #email="ngModel"
+              [class.is-invalid]="email.invalid && email.touched">
+            <!--<small class="text-danger" [class.d-none]="email.valid || email.untouched"><b>champs requis</b></small>-->
+            <div *ngIf="email.errors && email.invalid && email.touched">
+              <small class="text-danger" *ngIf="email.errors.required"><b>champs requis</b></small>
+              <small class="text-danger" *ngIf="email.errors.pattern"><b>Email invalide</b></small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="pwd" style="margin-top: 5px;">Mot de passe: <b class="text-danger">*</b></label>
+            <input type="password" class="form-control" placeholder="Tapez votre mot de passe" name="pwd"
+              [(ngModel)]="user.password" required #password="ngModel"
+              [class.is-invalid]="password.invalid && password.touched">
+            <div *ngIf="password.errors && password.invalid && password.touched">
+              <small class="text-danger" *ngIf="password.errors.required"><b>champs requis</b></small>
+            </div>
+            <small style="color: gray; font-size: 10px;">Seul l'administrateur connaît son adresse e-mail et son mot de
+              passe corrects</small>
+          </div>
+
+          <button [disabled]="adminloginform.form.invalid" type="submit" class="btn loginbtn">Authentifier</button>
+          <hr>
+          <b class="textual">
+            <i class="fa fa-arrow-left  mx-3 fa-2x" (click)="backToHome()"></i>
+          </b>
+
+        </form>
+      </div>
+
+
+  </div>
+</div>

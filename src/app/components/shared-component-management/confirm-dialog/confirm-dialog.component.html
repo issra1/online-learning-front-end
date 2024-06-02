@@ -1,0 +1,10 @@
+<div class="popup">
+<h1 class="mat-dialog-title">{{data.title}}</h1>
+<div class="mat-dialog-content">
+  {{data.message}}
+</div>
+<div class="dialog-buttons">
+  <input style="margin:0px 10px;" type="button" value="Confirm" [mat-dialog-close]="true">
+  <input type="button" value="Cancel"  [mat-dialog-close]="false">
+</div>
+</div>

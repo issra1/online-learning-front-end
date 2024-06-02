@@ -1,0 +1,144 @@
+<div class="content">
+  <div class="header" id="header">
+    <div class="nav">
+      <label></label>
+      <div class="switchs">
+
+        <button style="font-weight: bold;" class="logUser" id="logUser" *ngIf="isLoggedIn"
+          ><i class="fa fa-book"></i> Bienvenue ! Vous êtes connecté en tant que : {{ userEmail }}        </button>
+
+        <button style="font-weight: bold;" class="log" id="log" *ngIf="this.loginService.isUser()"
+          (click)="scrollToDivHtml(listCourseSection)"><i class="fa fa-book"></i> Les cours disponibles</button>
+        <button style="font-weight: bold;" class="log" id="log" (click)="scrollToDivHtml(aboutSection)"><i
+            class="fa fa-home"></i> Acceuil</button>
+        <button style="font-weight: bold;" class="log" id="log" (click)="scrollToDivHtml(servicesSection)"><i
+            class="fa fa-cog"></i> Services</button>
+        <button style="font-weight: bold;" class="log" id="log" *ngIf="!isLoggedIn" (click)="goToLoginPage()"><i class="fa fa-sign-in"></i>
+          Authentification</button>
+
+          <button style="font-weight: bold;" class="log" id="log" *ngIf="isLoggedIn" (click)="goToLoginPage()"><i class="fa fa-sign-in"></i>
+            Se déconnecter</button>
+  
+
+        <button style="font-weight: bold;" class="create_acc" id="create_acc" (click)="goToRegisterPage()"><i
+            class="fa fa-user-plus"></i> Créer
+          compte</button>
+      </div>
+
+
+    </div>
+    <div class="main">
+      <div class="text">
+        <h1 style="margin-left: -10%; font-family: Verdana;">Plate-forme d'apprentissage en ligne</h1><br>
+        <h4 style="font-family: monospace; font-weight: bolder; margin-left: -8%; color: rgb(248, 247, 247);">Developé
+          par Isra Ben Yemna & Iheb Abidi</h4><br><br>
+      </div><br>
+      <img class="floating" id="img3" [src]="'assets/img/lms-bg.png'">
+    </div>
+  </div>
+  <br>
+</div>
+<br><br>
+<marquee class="marquee" direction="left">🔔Cette application est destinée au Centre National de l'Informatique 😀
+</marquee>
+
+<section id="about" #aboutSection class="about about-bg">
+  <div class="about-container">
+    <div class="subtext1" id="subtext1"><span class="counter">01</span> &nbsp;Portail d'apprentissage convivial<i
+        id="subtext1" class="fa fa-caret-down"></i></div>
+    <div class="innertext1" id="innertext1">Ce portail vous facilite pour un <b
+        style="color: darkmagenta; font-size: larger; font-weight: bolder;">conviviale</b> expérience avec tous les
+      contenus et ressources d’apprentissage pour améliorer vos compétences. Vous pouvez aussi <b
+        style="color: darkgreen; font-size: large; font-weight: bolder;">télécharger le matériel lié au cours</b> Depuis
+      notre portail qui peut rendre votre processus d'apprentissage beaucoup plus facile</div>
+  </div>
+  <div class="about-container">
+    <div class="subtext1" id="subtext2"><span class="counter">02</span> &nbsp;Trois modes différents<i id="subtext2"
+        class="fa fa-caret-down"></i></div>
+    <div class="innertext1" id="innertext2">Ce portail d'apprentissage en ligne propose trois modes de fonctionnement
+      différents : <b style="color:darkblue; font-size: larger; font-weight: bolder;">ADMIN, FORMATEUR & APPRENANT.</b>
+      Chacun d'eux peut accéder à ses fonctionnalités respectives et effectuer sa tâche en conséquence. (par défaut,
+      l'ADMIN sera <b style="color: darkgreen; font-size: larger; font-weight: bolder;">Isra Ben Yemna & Iheb Abidi
+      </b><b style="color: darkred;">(Créateur de portail)</b></div>
+  </div>
+  <div class="about-container">
+    <div class="subtext1" id="subtext3"><span class="counter">03</span> &nbsp;Contenus d'apprentissage spécifiques<i
+        id="subtext3" class="fa fa-caret-down"></i></div>
+    <div class="innertext1" id="innertext3">Des contenus d'apprentissage séparés ont été inclus pour les deux <b
+        style="color: darkgreen; font-size: larger; font-weight: bolder;">Conférences vidéo</b> and <b
+        style="color: darkgreen; font-size: larger; font-weight: bolder;">Conférences sur le site Web.</b> L' <b
+        style="color: darkred; font-size: medium; font-weight: bolder;">ADMIN</b> ou <b
+        style="color: darkred; font-size: medium; font-weight: bolder;">FORMATEUR</b> peut spécifier le type de cours
+      lors de l'ajout d'un nouveau cours</div>
+  </div>
+  <div class="about-container">
+    <div class="subtext1" id="subtext4"><span class="counter">04</span> &nbsp;Plug-In Play Conférences vidéo intégrées<i
+        id="subtext4" class="fa fa-caret-down"></i></div>
+    <div class="innertext1" id="innertext4"><b
+        style="color: darkgreen; font-size: larger; font-weight: bolder;">Conférences vidéo</b> sont également divisés
+      en <b style="color: darkgreen; font-size: larger; font-weight: bolder;">des chapitres</b> Selon les instructeurs
+      et les utilisateurs, il est facilité d'apprendre sous forme de conférence vidéo intégrée dans notre <b
+        style="color: maroon; font-size: large; font-weight: bolder;">lecteur vidéo personnalisé.</b> Vous pouvez aussi
+      <b style="color: darkblue; font-size: medium; font-weight: bolder;">prendre des notes, télécharger des ressources,
+        poser des questions et donner son avis sur le cours.</b>
+    </div>
+  </div><br>
+  <img class="automation" [src]="'assets/img/imgTest.png'" width="470" height="470">
+</section>
+
+<main id="main">
+  <section id="services" #servicesSection class="services section-bg">
+    <div class="container" data-aos="fade-up">
+      <div class="section-title">
+        <h2 style="font-family: aladin; color: rgb(3, 34, 34);">Portail convivial pour l'apprentissage</h2>
+      </div>
+      <div class="mid_body2">
+        <div class="details">
+          <div class="detail_1" (click)="goToNextPageAdmin()"
+            style="background-color: rgb(19, 104, 97); margin-right: 5%;">
+            <h2 style="font-weight: bolder; font-size: 35px;font-family: monospace; margin-top: 5%; color: white;">
+              Admin </h2>
+            <div class="circle" style="border-radius: 50%; background-color: white; padding: 10%;">
+              <img [src]="'assets/img/admin.png'" width="130" height="130">
+            </div>
+          </div>
+          <div class="detail_2" (click)="goToNextPageTrainer()"
+            style="background-color: rgb(19, 104, 97); margin-right: 5%;">
+            <h2 style="font-weight: bolder; font-size: 35px;font-family: monospace; margin-top: 5%; color: white;">
+              Formateur </h2>
+            <div class="circle" style="border-radius: 50%; background-color: white; padding: 10%;">
+              <img [src]="'assets/img/femaleprofessor.png'" width="130" height="130">
+            </div>
+          </div>
+          <div class="detail_3" (click)="goToNextPageLearner()"
+            style="background-color: rgb(19, 104, 97); margin-right: 5%;">
+            <h2 style="font-weight: bolder; font-size: 35px;font-family: monospace; margin-top: 5%; color: white;">
+              Apprenant </h2>
+            <div class="circle" style="border-radius: 50%; background-color: white; padding: 10%;">
+              <img [src]="'assets/img/male.png'" width="130" height="130">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<main id="main">
+  <section id="services" #listCourseSection class="services section-bg">
+    <div *ngIf="this.loginService.isUser()">
+      <marquee class="marquee" direction="left">Liste des cours disponibles dans notre platforme 😀
+      </marquee>
+      <app-list-courses>
+      </app-list-courses>
+      <hr>
+      <br>
+      <br>
+    </div>
+  </section>
+</main>
+
+<div>
+
+</div>
+<app-footer></app-footer>

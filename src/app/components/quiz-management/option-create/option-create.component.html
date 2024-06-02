@@ -1,0 +1,12 @@
+<div class="container">
+<div class="option-create">
+    <h2>Create Option</h2>
+    <form (ngSubmit)="createOption()">
+      <div class="form-group">
+        <label for="optionText">Option Text:</label>
+        <input id="optionText" class="form-control" [(ngModel)]="option.text" name="text" required>
+      </div>
+      <button type="submit" class="btn btn-success">Create Option</button>
+    </form>
+  </div>
+</div>

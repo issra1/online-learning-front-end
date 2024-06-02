@@ -1,0 +1,38 @@
+<div class="container">
+  <h2>Gestion des cours uploaded</h2>
+  
+  <!-- Input for Video File -->
+  <div *ngIf="this.loginService.isAdmin() || this.loginService.isTrainer()">
+    <label for="videoFile" class="mt-3">Upload Video</label>
+    <input type="file" id="videoFile" (change)="onVideoFileChange($event)" class="form-control">  
+  </div>
+
+  <!-- Video Player -->
+  <div *ngIf="videoVisible" class="mt-3">
+    <video [src]="videoUrl" controls width="100%" height="600px"></video>
+  </div>
+  
+  <!-- Simulate Video Button -->
+  <div *ngIf="this.loginService.isAdmin() || this.loginService.isTrainer()">
+  <button class="btn btn-primary mt-3" (click)="simulateVideo()" [disabled]="!uploadedVideoFile">Simulate Video</button>
+  </div>
+
+
+  <!-- Input for PDF File -->
+  <div *ngIf="this.loginService.isAdmin() || this.loginService.isTrainer()">
+  <label for="pdfFile" class="mt-3">Upload PDF</label>
+  <input type="file" id="pdfFile" (change)="onPdfFileChange($event)" class="form-control">
+  </div>
+
+  <!-- PDF Viewer -->
+  <div *ngIf="pdfVisible" class="mt-3">
+    <iframe [src]="pdfUrl" width="100%" height="600px"></iframe>
+  </div>
+
+  <!-- File List -->
+  <ul class="list-group">
+    <li *ngFor="let fileName of fileNames" class="list-group-item" (click)="onFileSelected(fileName)">
+      {{ fileName }}
+    </li>
+  </ul>
+</div>
