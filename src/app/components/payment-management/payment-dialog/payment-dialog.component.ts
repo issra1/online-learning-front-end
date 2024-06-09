@@ -38,9 +38,7 @@ export class PaymentDialogComponent {
 
 
   ngOnInit(): void {
-    this.courseList = this.data.course;
-    console.log(this.data);
-    
+    this.courseList = this.data.course;    
     this.userId = this.loginService.getUserIdFromSessionStorage();
   }
 
@@ -55,7 +53,7 @@ export class PaymentDialogComponent {
             });
             }
           )
-          window.location.reload();
+          //window.location.reload();
           console.log('Course marked as paid.');
         }, error => {
           // Handle error if needed
@@ -65,6 +63,8 @@ export class PaymentDialogComponent {
       }
     // Close the dialog
     this.dialogRef.close();
+              //window.location.reload();
+
   }
 
   isValidCardNumber(): boolean {
