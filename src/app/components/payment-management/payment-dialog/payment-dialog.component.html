@@ -1,5 +1,14 @@
 <h2 mat-dialog-title class="dialog-title">Paiement</h2>
 <div mat-dialog-content class="dialog-content">
+  <ul>
+    <li *ngFor="let course of courseList">
+      <strong>{{ course.courseName }}</strong><br>
+      <div class="course-details">
+        <span><em>Langue:</em> {{ course.language }}</span>
+        <span><em>Prix:</em> {{ course.price }} €</span>
+      </div>
+    </li>
+  </ul>
   <p class="dialog-text">Veuillez entrer votre numéro de carte de crédit :</p>
   <mat-form-field appearance="outline" class="card-input">
     <input matInput placeholder="Numéro de carte" [(ngModel)]="cardNumber" maxlength="16">

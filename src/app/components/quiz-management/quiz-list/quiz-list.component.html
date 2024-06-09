@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 style="margin-left:100px; font-family: Verdana;">Liste des quizzes</h1><br>
+  <h1 style="margin-left:100px; font-family: Verdana;">Liste des quiz</h1><br>
   <div class="row">
     <div class="col-md-8">
       <div class="quiz-list">
@@ -22,7 +22,7 @@
                   (click)="updateQuiz(quiz)"><i class="fas fa-edit"></i></button>
                 <button *ngIf="this.loginService.isAdmin()" class="btn btn-primary" (click)="acceptQuiz(quiz)" [disabled]="quiz.isAccepted == true"><i
                   class="fas fa-check fa-lg"></i></button>
-                <button *ngIf="this.loginService.isAdmin()" style="margin-left: 10px;" class="btn btn-danger"
+                <button *ngIf="this.loginService.isTrainer()" style="margin-left: 10px;" class="btn btn-danger"
                   (click)="removeQuiz(quiz)"><i class="fas fa-trash-alt"></i></button>
               </div>
             </div>

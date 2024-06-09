@@ -1,50 +1,92 @@
-/* Center align the dialog title */
 .dialog-title {
-  text-align: center;
   font-size: 24px;
-  color: #333;
-  margin-top: 20px;
-}
-
-/* Style the content area */
-.dialog-content {
-  margin-top: 20px;
-}
-
-/* Style the paragraph */
-.dialog-text {
-  font-size: 16px;
-  margin-bottom: 10px;
-  color: #666;
-}
-
-/* Style the input field */
-.card-input {
-  width: 100%;
-}
-
-/* Style the buttons container */
-.dialog-actions {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+  font-weight: bold;
+  text-align: center;
   margin-bottom: 20px;
 }
 
-/* Style the Cancel button */
-.cancel-button {
-  margin-right: 10px;
-  background-color: #d84d4d;
-  color: #fff;
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
-/* Style the Submit button */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+li {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+}
+
+li strong {
+  font-size: 16px;
+  color: #333;
+}
+
+.course-details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.course-details span {
+  font-size: 14px;
+  color: #555;
+}
+
+.dialog-text {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.card-input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.card-input input {
+  width: 100%;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 20px;
+  border-top: 1px solid #ddd;
+}
+
+.cancel-button,
 .submit-button {
-  background-color: #007bff;
-  color: #fff;
+  font-size: 16px;
+  padding: 10px 20px;
 }
 
-/* Hover effect for buttons */
-.mat-dialog-actions button:hover {
+.cancel-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.submit-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.cancel-button:hover,
+.submit-button:hover {
   opacity: 0.8;
 }

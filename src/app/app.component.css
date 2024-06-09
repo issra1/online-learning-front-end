@@ -45,7 +45,7 @@
 
 .sidebar {
   width: 230px;
-  height: 600px;
+  height: 800px;
   /* Make sidebar full height of viewport */
   background-color: #2b779b;
   color: #fff;
@@ -168,4 +168,20 @@ i {
 
 .ul {
   margin-left: 30px;
+}
+
+/* Add this CSS in your CSS file (e.g., styles.css) */
+.sidebar ul li {
+  cursor: pointer; /* Change cursor to pointer to indicate clickable element */
+}
+
+.sidebar ul li a {
+  display: block; /* Make the anchor tags fill the entire width of the list items */
+  padding: 10px; /* Add padding for better clickability */
+  color: inherit; /* Inherit the color of the parent */
+  text-decoration: none; /* Remove default underline */
+}
+
+.sidebar ul li a:hover {
+  background-color: #f0f0f0; /* Change background color on hover for visual feedback */
 }

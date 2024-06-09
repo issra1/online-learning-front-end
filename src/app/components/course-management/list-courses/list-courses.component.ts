@@ -208,7 +208,7 @@ export class ListCoursesComponent {
     console.log(staticCourses);
 
     const dialogRef = this.dialog.open(PaymentDialogComponent, {
-      width: '400px',
+      width: '800px',
       data: { course: staticCourses }
     });
 
